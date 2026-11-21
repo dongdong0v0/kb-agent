@@ -8,6 +8,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
+# 单价（元 / 百万 token）—— 去 platform.deepseek.com 核对后改 .env
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -24,6 +25,8 @@ class Settings(BaseSettings):
     deepseek_model: str = "deepseek-chat"
     request_timeout: float = 30.0
     max_tokens: int = 1024
+    price_input_per_mtok: float = 2.0
+    price_output_per_mtok: float = 8.0
     temperature: float = Field(default=0.0, ge=0.0, le=2.0)
 
     @field_validator("deepseek_api_key")

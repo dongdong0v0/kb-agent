@@ -5,6 +5,8 @@ class StubSettings:
     deepseek_base_url = "https://example.test"
     deepseek_model = "stub-model"
     max_tokens = 128
+    price_input_per_mtok = 2.0
+    price_output_per_mtok = 8.0
     temperature = 0.0
 
     class deepseek_api_key:
