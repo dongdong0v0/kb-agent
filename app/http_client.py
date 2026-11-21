@@ -38,21 +38,25 @@ def _parse_json(resp: requests.Response, url: str) -> dict:
         raise HttpError(resp.status_code, url, f"返回不是 JSON：{resp.text[:200]}") from exc
 
 
-def get_json(
+def _request_json(
+    method: str,
     url: str,
     *,
+    payload: dict | None = None,
     policy: RetryPolicy | None = None,
     headers: dict[str, str] | None = None,
     session: requests.Session | None = None,
 ) -> dict:
-    """GET 一个 JSON 接口。可重试的错误会退避重试，4xx 立即失败。"""
+    """所有请求的唯一入口：超时、重试、错误分类都在这。"""
     policy = policy or RetryPolicy()
     sess = session or requests.Session()
     reason = "未知错误"
 
     for attempt in range(1, policy.attempts + 1):
         try:
-            resp = sess.get(url, headers=headers or {}, timeout=policy.timeout)
+            resp = sess.request(
+                method, url, json=payload, headers=headers or {}, timeout=policy.timeout
+            )
         except requests.Timeout:
             reason = "超时"
         except requests.ConnectionError:
@@ -65,12 +69,21 @@ def get_json(
             reason = f"HTTP {resp.status_code}"
 
         if attempt < policy.attempts:
-            delay = policy.backoff * 2 ** (attempt - 1) + random.uniform(0,0.1)
+            delay = policy.backoff * 2 ** (attempt - 1) + random.uniform(0, 0.1)
             print(f"[retry {attempt}/{policy.attempts}] {reason}，{delay:.1f}s 后重试")
             time.sleep(delay)
 
     raise HttpError(None, url, f"重试 {policy.attempts} 次仍失败：{reason}")
 
+
+def get_json(url: str, **kwargs) -> dict:
+    return _request_json("GET", url, **kwargs)
+
+
+def post_json(url: str, payload: dict, **kwargs) -> dict:
+    return _request_json("POST", url, payload=payload, **kwargs)
+
+       
 
 def main() -> None:
     print("① 公共接口 httpbin（无需 key）")

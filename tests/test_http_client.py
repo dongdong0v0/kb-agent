@@ -20,19 +20,16 @@ class FakeResponse:
 
 
 class FakeSession:
-    """按顺序返回预设结果；遇到 Exception 实例就抛出。"""
-
     def __init__(self, results: list) -> None:
         self.results = list(results)
         self.calls = 0
 
-    def get(self, *args, **kwargs):
+    def request(self, *args, **kwargs):
         self.calls += 1
         item = self.results.pop(0)
         if isinstance(item, Exception):
             raise item
         return item
-
 
 NO_SLEEP = RetryPolicy(attempts=3, backoff=0.0, timeout=(1.0, 1.0))
 
