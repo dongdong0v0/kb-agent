@@ -1,0 +1,238 @@
+{
+  "generated_at": "2026-11-22T10:43:25",
+  "model": "deepseek-chat",
+  "attempts_policy": 3,
+  "forced_max_tokens": 20,
+  "summary": {
+    "total": 20,
+    "success": 20,
+    "success_rate": 1.0,
+    "avg_attempts": 2.0,
+    "avg_latency_ms": 1785,
+    "retried_cases": 20,
+    "total_tokens": 11057,
+    "total_cost": 0.03172
+  },
+  "cases": [
+    {
+      "idx": 1,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1659,
+      "tokens": 536,
+      "cost": 0.00148,
+      "chars": 129,
+      "error": "",
+      "prompt": "默认数据库密码仍是 admin/admin"
+    },
+    {
+      "idx": 2,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1822,
+      "tokens": 562,
+      "cost": 0.0016400000000000002,
+      "chars": 146,
+      "error": "",
+      "prompt": "生产日志未集中存储，仅存本机"
+    },
+    {
+      "idx": 3,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 2126,
+      "tokens": 553,
+      "cost": 0.001604,
+      "chars": 149,
+      "error": "",
+      "prompt": "所有运维人员共用 root 账号"
+    },
+    {
+      "idx": 4,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1950,
+      "tokens": 544,
+      "cost": 0.0015080000000000002,
+      "chars": 116,
+      "error": "",
+      "prompt": "补丁滞后 90 天未更新"
+    },
+    {
+      "idx": 5,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 2156,
+      "tokens": 536,
+      "cost": 0.001492,
+      "chars": 123,
+      "error": "",
+      "prompt": "核心库无异地备份"
+    },
+    {
+      "idx": 6,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1376,
+      "tokens": 562,
+      "cost": 0.001628,
+      "chars": 139,
+      "error": "",
+      "prompt": "SSH 对公网开放且允许密码登录"
+    },
+    {
+      "idx": 7,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 2321,
+      "tokens": 574,
+      "cost": 0.001736,
+      "chars": 172,
+      "error": "",
+      "prompt": "MySQL 3306 直接暴露在公网"
+    },
+    {
+      "idx": 8,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1624,
+      "tokens": 551,
+      "cost": 0.0015639999999999999,
+      "chars": 129,
+      "error": "",
+      "prompt": "无主机入侵检测，也未接入告警"
+    },
+    {
+      "idx": 9,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1676,
+      "tokens": 547,
+      "cost": 0.0015440000000000002,
+      "chars": 129,
+      "error": "",
+      "prompt": "备份文件未加密就放对象存储"
+    },
+    {
+      "idx": 10,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1817,
+      "tokens": 540,
+      "cost": 0.001524,
+      "chars": 133,
+      "error": "",
+      "prompt": "全年无安全培训记录"
+    },
+    {
+      "idx": 11,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1472,
+      "tokens": 550,
+      "cost": 0.001556,
+      "chars": 134,
+      "error": "",
+      "prompt": "离职员工账号 30 天未回收"
+    },
+    {
+      "idx": 12,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1678,
+      "tokens": 578,
+      "cost": 0.0017560000000000002,
+      "chars": 171,
+      "error": "",
+      "prompt": "内网横向无隔离，办公网可直达数据库"
+    },
+    {
+      "idx": 13,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1659,
+      "tokens": 561,
+      "cost": 0.001608,
+      "chars": 137,
+      "error": "",
+      "prompt": "未做最小权限，开发账号有 DDL 权限"
+    },
+    {
+      "idx": 14,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1596,
+      "tokens": 560,
+      "cost": 0.0016359999999999999,
+      "chars": 150,
+      "error": "",
+      "prompt": "审计日志保留 7 天就覆盖"
+    },
+    {
+      "idx": 15,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1560,
+      "tokens": 546,
+      "cost": 0.001512,
+      "chars": 121,
+      "error": "",
+      "prompt": "证书过期未监控，靠用户报错才发现"
+    },
+    {
+      "idx": 16,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1470,
+      "tokens": 550,
+      "cost": 0.001568,
+      "chars": 134,
+      "error": "",
+      "prompt": "镜像来源不明，未做漏洞扫描"
+    },
+    {
+      "idx": 17,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 2052,
+      "tokens": 537,
+      "cost": 0.0014759999999999999,
+      "chars": 115,
+      "error": "",
+      "prompt": "密钥硬编码在代码仓库里"
+    },
+    {
+      "idx": 18,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1416,
+      "tokens": 546,
+      "cost": 0.001536,
+      "chars": 128,
+      "error": "",
+      "prompt": "无变更审批流程，直接改生产"
+    },
+    {
+      "idx": 19,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 2285,
+      "tokens": 569,
+      "cost": 0.001768,
+      "chars": 191,
+      "error": "",
+      "prompt": "钓鱼演练从未做过"
+    },
+    {
+      "idx": 20,
+      "ok": true,
+      "attempts": 2,
+      "latency_ms": 1990,
+      "tokens": 555,
+      "cost": 0.0015840000000000001,
+      "chars": 139,
+      "error": "",
+      "prompt": "应急响应无预案，出事靠临时拉群"
+    }
+  ]
+}
