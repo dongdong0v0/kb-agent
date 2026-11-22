@@ -38,6 +38,20 @@
 
 原始报告在 `data/eval/json_success_<时间戳>.json`，含每题 attempts / 耗时 / token / 错误文本。
 
+### Prompt 版本对比（20 题 × 3 版）
+
+| 版本 | 改动 | 成功率 | 引用忠实度 | 平均措施 | tokens | 花费 |
+|---|---|---|---|---|---|---|
+| v1 | 只声明角色 | 100% | 30% | 3.6 | 6334 | ¥0.0257 |
+| v2 | + 字段契约（severity 三档阈值、evidence 必须摘自原文） | 100% | 100% | 3.0 | 8787 | ¥0.0283 |
+| v3 | + 一条 few-shot | 100% | 100% | 3.0 | 10484 | ¥0.0303 |
+
+三版成功率都是 100%，分不出高下——因为题目简单、schema 又强制了字段。所以补了一个不靠人工标注的指标「引用忠实度」：evidence 是否为原文子串。v1 有 70% 的 evidence 是模型自己改写的。
+
+结论：**结构化输出不出错，不等于输出可信**；few-shot 在这批题上没有额外收益，只多花 20% tokens，默认用 v2。更严格的 severity 判定准确率需要人工 gold label，留到 W5 评测体系。
+
+复现：`uv run python scripts/eval_prompt.py`
+
 ## 快速开始
 
     git clone git@github.com:dongdong0v0/kb-agent.git
