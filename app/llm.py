@@ -67,11 +67,11 @@ class ChatClient:
             self.messages.append(Message("system", system_prompt))
 
     # ---------------- 非流式 ----------------
-    def send(self, user_text: str) -> ChatResult:
+    def send(self, user_text: str, *, extra: dict | None = None) -> ChatResult:
         self.messages.append(Message("user", user_text))
         body = post_json(
             self._url(),
-            self._payload(),
+            self._payload(extra),
             headers=self._headers(),
             policy=RetryPolicy(attempts=3, backoff=0.5, timeout=(5.0, 60.0)),
             session=self.session,
@@ -154,14 +154,17 @@ class ChatClient:
             "Content-Type": "application/json",
         }
 
-    def _payload(self) -> dict:
-        return {
+    def _payload(self, extra: dict | None = None) -> dict:
+        payload = {
             "model": self.settings.deepseek_model,
             "messages": [m.to_dict() for m in self.messages],
             "max_tokens": self.settings.max_tokens,
             "temperature": self.settings.temperature,
             "stream": False,
         }
+        if extra:
+            payload.update(extra)
+        return payload
 
     def _cost(self, usage: dict) -> float:
         prompt = usage.get("prompt_tokens", 0)
